@@ -1,22 +1,22 @@
 import csv
 
-#  Öffnen der CSV-Datei zum Lesen mit angepassten Trennzeichen
+#  csv datei öffnen (read) und trennzeichen anpassen
 with open('bundeslaender.csv', newline='', encoding='utf-8') as csvfile:
     reader = csv.DictReader(csvfile, delimiter=';')
 
-    # Konvertieren der CSV-Daten in eine Liste von Dictionaries
+    # konvertieren in eine liste mit dictionaries
     data = [row for row in reader]
 
-# Daten zur Überprüfung printen
+# print um zu prüfen ob es richtig geklappt hat
 for row in data:
     print(row)
 
 import json
 
-#  Daten in JSON konvertieren
+#  daten in json konvertieren
 json_data = json.dumps(data, ensure_ascii=False, indent=2)
 
-# Schreiben der JSON-Daten in die JavaScript-Datei
+# schreiben der json-daten in eine js-datei
 with open('bundeslaender.js', 'w', encoding='utf-8') as jsfile:
     jsfile.write('const bundeslaenderDaten = ')
     jsfile.write(json_data)
